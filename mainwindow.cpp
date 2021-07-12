@@ -31,10 +31,21 @@ MainWindow::MainWindow(QWidget *parent)
     //之后自动调paintEvent
 }
 
-void MainWindow::paintGird(int y, int x, QBrush color)
+void MainWindow::setGird(int y, int x, int color)
 {
     QPainter painter(this);
-    painter.setBrush(color);
+    //方格颜色
+    QBrush brush;
+    switch(color)
+    {
+        case 0: brush.setColor(Qt::white); break;
+        case 1: brush.setColor(Qt::blue); break;
+        case 2: brush.setColor(Qt::green); break;
+        case 3: brush.setColor(Qt::red); break;
+        default: break;
+    }
+
+    painter.setBrush(brush);
     painter.drawRect(QRect(20 + this -> girdSize * x, 20 + this -> girdSize * y, girdSize, girdSize));
 }
 
@@ -53,14 +64,7 @@ void MainWindow::paintEvent(QPaintEvent *)
     vector<vector<int> > vec = this -> map -> getMap();
     for (int i = 0; i < vec.size(); i++)
         for (int j = 0; j < vec[i].size(); j++)
-            switch (vec[i][j])
-            {
-                case 0: paintGird(i, j, road); break;
-                case 1: paintGird(i, j, wall); break;
-                case 2: paintGird(i, j, start); break;
-                case 3: paintGird(i, j, end); break;
-                default: break;
-            }
+            this -> setGird(i, j, vec[i][j]);
 }
 
 MainWindow::~MainWindow()
