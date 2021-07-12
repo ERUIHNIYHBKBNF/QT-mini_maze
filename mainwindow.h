@@ -21,12 +21,12 @@ public:
     ~MainWindow();
 
     void paintEvent(QPaintEvent *);
+    void setGird(int, int, int);
 
 private:
     Ui::MainWindow *ui;
     MazeMap *map;
     int mazeHeight, mazeWidth;
     int girdSize;
-    void paintGird(int, int, QBrush);
 };
 #endif // MAINWINDOW_H
