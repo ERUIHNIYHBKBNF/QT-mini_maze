@@ -6,6 +6,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "mazemap.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,5 +24,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    MazeMap *map;
 };
 #endif // MAINWINDOW_H

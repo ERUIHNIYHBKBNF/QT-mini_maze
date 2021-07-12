@@ -3,10 +3,10 @@
 #include <vector>
 using std::vector;
 
-class mazemap
+class MazeMap
 {
 public:
-    mazemap();
+    MazeMap();
     int getHeight();
     int getWidth();
     vector<vector<int> > getMap();
