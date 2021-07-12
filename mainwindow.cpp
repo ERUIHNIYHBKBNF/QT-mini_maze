@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPainter>
+#include <vector>
+using std::vector;
 
 #include <QDebug>
 
@@ -10,8 +12,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     //generateMaze();
-    qDebug() << "qwq";
-
+    this -> map = new MazeMap();
+    //qDebug() << "qwq";
+    vector<vector<int> > vec = map -> getMap();
+//    for (vector<int> i : vec)
+//    {
+//        for (int j : i)
+//            printf("%d ", j);
+//        printf("\n");
+//    }
     //之后自动调paintEvent
 }
 

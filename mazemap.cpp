@@ -1,6 +1,6 @@
-#include "mazemap.h"
+#include "MazeMap.h"
 
-mazemap::mazemap()
+MazeMap::MazeMap()
 {
     //暂时用作测试数据
     this -> height = 5;
@@ -13,28 +13,28 @@ mazemap::mazemap()
         {1, 1, 1, 1, 1}};
 }
 
-void mazemap::setSize(int height, int width)
+void MazeMap::setSize(int height, int width)
 {
     this -> height = height;
     this -> width = width;
 }
 
-void mazemap::setMap(vector<vector<int>> map)
+void MazeMap::setMap(vector<vector<int>> map)
 {
     this -> map = map;
 }
 
-int mazemap::getHeight()
+int MazeMap::getHeight()
 {
     return this -> height;
 }
 
-int mazemap::getWidth()
+int MazeMap::getWidth()
 {
     return this -> width;
 }
 
-vector<vector<int> > mazemap::getMap()
+vector<vector<int> > MazeMap::getMap()
 {
     return this -> map;
 }
