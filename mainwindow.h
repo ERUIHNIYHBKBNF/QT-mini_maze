@@ -25,5 +25,8 @@ public:
 private:
     Ui::MainWindow *ui;
     MazeMap *map;
+    int mazeHeight, mazeWidth;
+    int girdSize;
+    void paintGird(int, int, QBrush);
 };
 #endif // MAINWINDOW_H
