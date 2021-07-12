@@ -12,12 +12,14 @@ SOURCES += \
     controller.cpp \
     generator.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mazemap.cpp
 
 HEADERS += \
     controller.h \
     generator.h \
-    mainwindow.h
+    mainwindow.h \
+    mazemap.h
 
 FORMS += \
     mainwindow.ui
