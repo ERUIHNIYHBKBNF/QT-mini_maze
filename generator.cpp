@@ -17,20 +17,20 @@ void generator::findBlock()
 {
         //找出与当前位置相邻的墙
     if(x+1<=row1 && M[x+1][y] == WALL)
-    {//down
-        myblock.push_back(block(x+1,y,down));
+    {//DOWN
+        myblock.push_back(block(x+1,y,DOWN));
     }
     if(y+1<=column1 && M[x][y+1] == WALL)
-    {//right
-        myblock.push_back(block(x,y+1,right));
+    {//RIGHT
+        myblock.push_back(block(x,y+1,RIGHT));
     }
     if(x-1>=1 && M[x-1][y] == WALL)
-    {//up
-        myblock.push_back(block(x-1,y,up));
+    {//UP
+        myblock.push_back(block(x-1,y,UP));
     }
     if(y-1>=1 && M[x][y-1] == WALL)
-    {//left
-        myblock.push_back(block(x,y-1,left));
+    {//LEFT
+        myblock.push_back(block(x,y-1,LEFT));
     }
 }
 void generator::genMaze()
@@ -48,19 +48,19 @@ void generator::genMaze()
         y = SelectBlock.column;
         //根据当前选择的墙的方向进行后续操作
         switch(SelectBlock.direction) {
-            case down: {
+            case DOWN: {
                 x++;
                 break;
             }
-            case right: {
+            case RIGHT: {
                 y++;
                 break;
             }
-            case left: {
+            case LEFT: {
                 y--;
                 break;
             }
-            case up: {
+            case UP: {
                 x--;
                 break;
             }
@@ -104,4 +104,12 @@ void generator::genMaze()
     qwq.setMap(maze);
         printf("\n");
 }
+}
+
+MazeMap *generator::getMap()
+{
+    MazeMap *map = new MazeMap();
+    map -> setSize(maze.size(), maze[0].size());
+    map -> setMap(maze);
+    return map;
 }

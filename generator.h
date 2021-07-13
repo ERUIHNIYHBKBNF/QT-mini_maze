@@ -7,10 +7,10 @@
 #include <ctime>
 #include <iostream>
 #include "mazemap.h"
-#define down 1
-#define right 2
-#define left 3
-#define up 4
+#define DOWN 1
+#define RIGHT 2
+#define LEFT 3
+#define UP 4
 #define WALL -1
 #define NOTHING 2
 using namespace std;
@@ -29,6 +29,7 @@ public:
     void init();
     void findBlock();
     void genMaze();
+    MazeMap *getMap();
 private:
     vector<block> myblock;
     int M[200][200];
