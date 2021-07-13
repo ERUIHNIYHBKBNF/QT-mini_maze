@@ -11,8 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //generateMaze();
-    map = new MazeMap();
+    generator *gen = new generator(11, 11);
+    gen -> genMaze();
+    map = gen ->getMap();
+    //map = new MazeMap();
     vector<vector<int> > vec = map -> getMap();
     mazeHeight = map -> getHeight();
     mazeWidth = map -> getWidth();

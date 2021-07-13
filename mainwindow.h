@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include "mazemap.h"
 #include "controller.h"
+#include "generator.h"
 #include <QPainter>
 #include <vector>
 using std::vector;
