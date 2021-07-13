@@ -18,16 +18,13 @@ MainWindow::MainWindow(QWidget *parent)
     mazeWidth = map -> getWidth();
     girdSize = MAZESIZE / mazeHeight;
 
-
     player = new QPushButton();
     player -> setParent(this);
     player -> resize(girdSize / 2, girdSize / 2);
     player -> move(20 + girdSize / 4, 20 + girdSize * 5 / 4);
     //this -> resize(750, 750);
 
-    mainGame = new Controller();
-    mainGame -> setMap(map);
-
+    mainGame = new Controller(map);
     playerX = 1, playerY = 0;
 
     //qDebug() << girdSize;
@@ -89,7 +86,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
     else if (event -> key() == Qt::Key_Right || event -> key() == Qt::Key_D)
     {
-        if (mainGame -> makeMove(1))
+        if (mainGame -> makeMove(2))
         {
             playerY++;
             movePlayer(playerX, playerY);
@@ -97,7 +94,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
     else if (event -> key() == Qt::Key_Down || event -> key() == Qt::Key_S)
     {
-        if (mainGame -> makeMove(1))
+        if (mainGame -> makeMove(4))
         {
             playerX++;
             movePlayer(playerX, playerY);
@@ -105,7 +102,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
     else if (event -> key() == Qt::Key_Left || event -> key() == Qt::Key_A)
     {
-        if (mainGame -> makeMove(1))
+        if (mainGame -> makeMove(8))
         {
             playerY--;
             movePlayer(playerX, playerY);

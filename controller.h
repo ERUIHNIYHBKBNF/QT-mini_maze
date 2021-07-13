@@ -10,22 +10,23 @@
 #define CONTROLLER_H
 
 #include <QDebug>
+#include <vector>
 #include "mazemap.h"
+using std::vector;
 
 class Controller
 {
 public:
-    Controller();
-    void setMap(MazeMap *);
+    Controller(MazeMap *);
     bool isOver();
     bool makeMove(int); //1 2 4 8
-    void reset();
 private:
     //人物位置　行 列
     int playerX, playerY;
     //0进行中，1已结束
     bool status;
     MazeMap *map;
+    vector<vector<int> > maze;
 };
 
 #endif // CONTROLLER_H
