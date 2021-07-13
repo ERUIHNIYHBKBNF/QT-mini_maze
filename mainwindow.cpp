@@ -35,17 +35,14 @@ void MainWindow::setGird(int y, int x, int color)
 {
     QPainter painter(this);
     //方格颜色
-    QBrush brush;
     switch(color)
     {
-        case 0: brush.setColor(Qt::white); break;
-        case 1: brush.setColor(Qt::blue); break;
-        case 2: brush.setColor(Qt::green); break;
-        case 3: brush.setColor(Qt::red); break;
+        case 0: painter.setBrush(QBrush(Qt::white)); break;
+        case 1: painter.setBrush(QBrush(Qt::blue)); break;
+        case 2: painter.setBrush(QBrush(Qt::green)); break;
+        case 3: painter.setBrush(QBrush(Qt::red)); break;
         default: break;
     }
-
-    painter.setBrush(brush);
     painter.drawRect(QRect(20 + this -> girdSize * x, 20 + this -> girdSize * y, girdSize, girdSize));
 }
 
