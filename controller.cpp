@@ -2,8 +2,9 @@
 
 Controller::Controller()
 {
-    this -> playerX = 1, this -> playerY = 0;
-    qDebug() << "qwq";
+    playerX = 1, playerY = 0;
+    //qDebug() << "qwq";
+    status = 0;
 }
 
 void Controller::setMap(MazeMap *map)
@@ -13,7 +14,7 @@ void Controller::setMap(MazeMap *map)
 
 bool Controller::isOver()
 {
-    return !this -> status;
+    return status;
 }
 
 void Controller::reset()

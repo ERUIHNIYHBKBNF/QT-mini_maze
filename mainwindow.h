@@ -12,6 +12,7 @@
 #include <vector>
 using std::vector;
 #include <QKeyEvent>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,6 +35,8 @@ private:
     int girdSize;
     void setGird(int, int, int);
     void keyPressEvent(QKeyEvent *);
+    void movePlayer(int, int);
     Controller *mainGame;
+    QPushButton *player;
 };
 #endif // MAINWINDOW_H
