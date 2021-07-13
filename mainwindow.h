@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 #include "mazemap.h"
+#include "controller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,7 +20,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
     void paintEvent(QPaintEvent *);
     void setGird(int, int, int);
 
@@ -28,5 +28,7 @@ private:
     MazeMap *map;
     int mazeHeight, mazeWidth;
     int girdSize;
+    void keyPressEvent(QKeyEvent *);
+    Controller mainGame;
 };
 #endif // MAINWINDOW_H

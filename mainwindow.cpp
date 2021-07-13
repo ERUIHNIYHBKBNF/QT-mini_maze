@@ -64,6 +64,19 @@ void MainWindow::paintEvent(QPaintEvent *)
             this -> setGird(i, j, vec[i][j]);
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+//    switch (event)
+//    {
+//        case value:
+
+//            break;
+//        default:
+//            break;
+//    }
+    qDebug() << "qwq";
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
