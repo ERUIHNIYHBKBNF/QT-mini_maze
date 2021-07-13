@@ -1,4 +1,4 @@
-#include "MazeMap.h"
+#include "mazemap.h"
 
 MazeMap::MazeMap()
 {
