@@ -8,6 +8,10 @@
 #include <QMainWindow>
 #include "mazemap.h"
 #include "controller.h"
+#include <QPainter>
+#include <vector>
+using std::vector;
+#include <QKeyEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,14 +25,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void paintEvent(QPaintEvent *);
-    void setGird(int, int, int);
 
 private:
     Ui::MainWindow *ui;
     MazeMap *map;
     int mazeHeight, mazeWidth;
+    int playerX, playerY;
     int girdSize;
+    void setGird(int, int, int);
     void keyPressEvent(QKeyEvent *);
-    Controller mainGame;
+    Controller *mainGame;
 };
 #endif // MAINWINDOW_H

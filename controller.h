@@ -17,10 +17,14 @@ class Controller
 public:
     Controller();
     void setMap(MazeMap *);
+    bool isOver();
+    bool makeMove(int); //1 2 4 8
     void reset();
 private:
     //人物位置　行 列
     int playerX, playerY;
+    //0进行中，1已结束
+    bool status;
     MazeMap *map;
 };
 

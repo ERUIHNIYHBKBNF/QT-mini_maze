@@ -11,7 +11,17 @@ void Controller::setMap(MazeMap *map)
     this -> map = map;
 }
 
+bool Controller::isOver()
+{
+    return !this -> status;
+}
+
 void Controller::reset()
 {
 
+}
+
+bool Controller::makeMove(int direction)
+{
+    return 1;
 }
