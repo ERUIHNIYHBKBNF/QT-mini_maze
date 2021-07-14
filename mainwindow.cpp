@@ -14,8 +14,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     QPushButton *reset = new QPushButton("重新开始", this);
     reset -> resize(150, 75);
-    reset -> move(600, 100);
+    reset -> move(600, 175);
     connect(reset, &QPushButton::clicked, this, &MainWindow::newGame);
+    info = new QLineEdit();
+    info -> setParent(this);
+    info -> resize(200, 50);
+    info -> move(575, 50);
+    info -> setEnabled(false);
+    info -> setAlignment(Qt::AlignCenter);
+    info -> setText("游戏进行中...");
 
     generator *gen = new generator(11, 11);
     gen -> genMaze();
@@ -93,6 +100,7 @@ void MainWindow::newGame()
     delete mainGame;
     mainGame = new Controller(map);
     playerX = 1, playerY = 0;
+    info -> setText("游戏进行中...");
 }
 
 void MainWindow::movePlayer(int x, int y)
@@ -120,6 +128,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         {
             playerY++;
             movePlayer(playerX, playerY);
+            if (playerX == map -> getHeight() - 2 && playerY == map -> getWidth() - 1)
+                info -> setText("恭喜通关！");
         }
     }
     else if (event -> key() == Qt::Key_Down || event -> key() == Qt::Key_S)
