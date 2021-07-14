@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this -> setWindowTitle("mini_maze");
 
     QPushButton *reset = new QPushButton("重新开始", this);
     reset -> resize(150, 75);
