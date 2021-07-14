@@ -14,6 +14,8 @@
 using std::vector;
 #include <QKeyEvent>
 #include <QPushButton>
+#include <QLineEdit>
+#include <QComboBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,6 +29,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void paintEvent(QPaintEvent *);
+    void newGame();
 
 private:
     Ui::MainWindow *ui;
@@ -39,5 +42,7 @@ private:
     void movePlayer(int, int);
     Controller *mainGame;
     QPushButton *player;
+    QLineEdit *info;
+    QComboBox *checkSize;
 };
 #endif // MAINWINDOW_H
