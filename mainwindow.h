@@ -15,6 +15,7 @@ using std::vector;
 #include <QKeyEvent>
 #include <QPushButton>
 #include <QLineEdit>
+#include <QComboBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,5 +43,6 @@ private:
     Controller *mainGame;
     QPushButton *player;
     QLineEdit *info;
+    QComboBox *checkSize;
 };
 #endif // MAINWINDOW_H

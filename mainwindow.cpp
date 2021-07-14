@@ -3,6 +3,9 @@
 
 #define MAZESIZE 500
 #define PADDING 30
+#define SMALL 11
+#define MEDIUM 21
+#define BIG 31
 
 #include <QDebug>
 
@@ -13,19 +16,27 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this -> setWindowTitle("mini_maze");
 
+    checkSize = new QComboBox(this);
+    checkSize -> resize(110, 30);
+    checkSize -> move(620, 200);
+    checkSize -> addItem("小型地图");
+    checkSize -> addItem("中型地图");
+    checkSize -> addItem("大型地图");
+
     QPushButton *reset = new QPushButton("重新开始", this);
     reset -> resize(150, 75);
-    reset -> move(600, 175);
+    reset -> move(600, 325);
     connect(reset, &QPushButton::clicked, this, &MainWindow::newGame);
+
     info = new QLineEdit();
     info -> setParent(this);
     info -> resize(200, 50);
-    info -> move(575, 50);
+    info -> move(575, 75);
     info -> setEnabled(false);
     info -> setAlignment(Qt::AlignCenter);
     info -> setText("游戏进行中...");
 
-    generator *gen = new generator(11, 11);
+    generator *gen = new generator(SMALL, SMALL);
     gen -> genMaze();
     map = gen ->getMap();
     delete gen;
@@ -36,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     player = new QPushButton();
     player -> setParent(this);
+    player -> setStyleSheet("background: yellow;");
     player -> resize(girdSize / 2, girdSize / 2);
     player -> move(PADDING + girdSize / 4, PADDING + girdSize * 5 / 4);
     //this -> resize(750, 750);
@@ -50,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
 //            printf("%d ", j);
 //        printf("\n");
 //    }
+    setFocusPolicy(Qt::StrongFocus);
 }
 
 void MainWindow::setGird(int y, int x, int color)
@@ -84,7 +97,12 @@ void MainWindow::paintEvent(QPaintEvent *)
 
 void MainWindow::newGame()
 {
-    generator *gen = new generator(11, 11);
+    int type = checkSize -> currentIndex(), m_size = SMALL;
+    if (type == 1)
+        m_size = MEDIUM;
+    if (type == 2)
+        m_size = BIG;
+    generator *gen = new generator(m_size, m_size);
     gen -> genMaze();
     delete map;
     map = gen ->getMap();
@@ -95,6 +113,9 @@ void MainWindow::newGame()
 
     this -> repaint();
 
+    player -> resize(girdSize / 2, girdSize / 2);
+    if (type == 3)
+        player -> resize(girdSize * 2 / 3, girdSize * 2 / 3);
     player -> move(PADDING + girdSize / 4, PADDING + girdSize * 5 / 4);
     //this -> resize(750, 750);
 
