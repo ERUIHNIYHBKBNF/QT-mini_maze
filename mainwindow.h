@@ -16,6 +16,8 @@ using std::vector;
 #include <QPushButton>
 #include <QLineEdit>
 #include <QComboBox>
+#include <queue>
+using std::queue;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,5 +46,6 @@ private:
     QPushButton *player;
     QLineEdit *info;
     QComboBox *checkSize;
+    void getAns();
 };
 #endif // MAINWINDOW_H

@@ -25,8 +25,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     QPushButton *reset = new QPushButton("重新开始", this);
     reset -> resize(150, 75);
-    reset -> move(600, 325);
+    reset -> move(600, 300);
     connect(reset, &QPushButton::clicked, this, &MainWindow::newGame);
+
+    QPushButton *solve = new QPushButton("自动寻路", this);
+    solve -> resize(150, 75);
+    solve -> move(600, 425);
+    connect(solve, &QPushButton::clicked, this, &MainWindow::getAns);
 
     info = new QLineEdit();
     info -> setParent(this);
@@ -170,6 +175,23 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             movePlayer(playerX, playerY);
         }
     }
+}
+
+void MainWindow::getAns()
+{
+    //getque
+    queue<pair<int, int> > ansList;
+//    ansList.push(make_pair(1, 1));
+//    ansList.push(make_pair(1, 2));
+    vector<vector<int> > vec = map -> getMap();
+    while (!ansList.empty())
+    {
+        pair<int, int> ans = ansList.front();
+        vec[ans.first][ans.second] = 3;
+        ansList.pop();
+    }
+    map -> setMap(vec);
+    this -> repaint();
 }
 
 MainWindow::~MainWindow()
