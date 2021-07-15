@@ -180,10 +180,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 void MainWindow::getAns()
 {
     //getque
-    queue<pair<int, int> > ansList;
+    vector<vector<int> > vec = map -> getMap();
+    autoSearch aut(vec);
+    aut.genRoute();
+    queue<pair<int, int> > ansList = aut.getQueue();
 //    ansList.push(make_pair(1, 1));
 //    ansList.push(make_pair(1, 2));
-    vector<vector<int> > vec = map -> getMap();
+
     while (!ansList.empty())
     {
         pair<int, int> ans = ansList.front();
