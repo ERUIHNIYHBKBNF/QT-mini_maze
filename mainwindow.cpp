@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     reset -> move(600, 300);
     connect(reset, &QPushButton::clicked, this, &MainWindow::newGame);
 
-    QPushButton *solve = new QPushButton("自动寻路", this);
+    solve = new QPushButton("自动寻路", this);
     solve -> resize(150, 75);
     solve -> move(600, 425);
     connect(solve, &QPushButton::clicked, this, &MainWindow::getAns);
@@ -115,6 +115,7 @@ void MainWindow::newGame()
     mazeHeight = map -> getHeight();
     mazeWidth = map -> getWidth();
     girdSize = MAZESIZE / mazeHeight;
+    connect(solve, &QPushButton::clicked, this, &MainWindow::getAns);
 
     this -> repaint();
 
@@ -179,13 +180,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 void MainWindow::getAns()
 {
+    disconnect(solve, &QPushButton::clicked, this, &MainWindow::getAns);
     //getque
     vector<vector<int> > vec = map -> getMap();
     autoSearch aut(vec);
     aut.genRoute();
     queue<pair<int, int> > ansList = aut.getQueue();
-//    ansList.push(make_pair(1, 1));
-//    ansList.push(make_pair(1, 2));
 
     while (!ansList.empty())
     {

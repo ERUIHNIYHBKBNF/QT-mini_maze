@@ -44,6 +44,7 @@ private:
     void movePlayer(int, int);
     Controller *mainGame;
     QPushButton *player;
+    QPushButton *solve;
     QLineEdit *info;
     QComboBox *checkSize;
     void getAns();

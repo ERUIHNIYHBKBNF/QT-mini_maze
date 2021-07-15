@@ -13,13 +13,15 @@ SOURCES += \
     generator.cpp \
     main.cpp \
     mainwindow.cpp \
-    mazemap.cpp
+    mazemap.cpp \
+    autosearch.cpp
 
 HEADERS += \
     controller.h \
     generator.h \
     mainwindow.h \
-    mazemap.h
+    mazemap.h \
+    autosearch.h
 
 FORMS += \
     mainwindow.ui
