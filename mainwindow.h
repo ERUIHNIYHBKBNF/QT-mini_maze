@@ -18,7 +18,7 @@ using std::vector;
 #include <QComboBox>
 #include <queue>
 using std::queue;
-
+#include "autosearch.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -44,6 +44,7 @@ private:
     void movePlayer(int, int);
     Controller *mainGame;
     QPushButton *player;
+    QPushButton *solve;
     QLineEdit *info;
     QComboBox *checkSize;
     void getAns();
